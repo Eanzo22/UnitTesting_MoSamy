@@ -91,11 +91,21 @@ namespace TestProject_Day1
         public void AddCars_BMW_CkeckListOfCars() {
             //Arrange
             CarStore carStore = new CarStore();
-            BMW bmw = new();
+            BMW bmw = new() { velocity=15};
            //Act
             carStore.AddCar(bmw);
             //Collection Assert
             Assert.NotEmpty(carStore.cars);
+            Assert.Contains(carStore.cars, c => c.velocity > 10);
+        }
+        [Fact]
+        public void NewCar_TrySuzuki_Exception() {
+
+            //Exception Assert
+            Assert.ThrowsAny<Exception>(() =>
+            {
+                Car? car = CarFactory.NewCar(CarTypes.Suzuki);
+            });
         }
     }
 }

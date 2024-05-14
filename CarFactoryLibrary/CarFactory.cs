@@ -18,6 +18,8 @@ namespace CarFactoryLibrary
                     return new BMW();
                 case CarTypes.Audi:
                     return null;
+                case CarTypes.Suzuki:
+                    throw new NotSupportedException();
                 default:
                     throw new NotImplementedException();
             }
